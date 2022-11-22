@@ -1,0 +1,23 @@
+{
+	"name": "wedgehr/distributed-laravel-infrastructure",
+	"autoload": {
+		"psr-4": {
+			"DistributedLaravel\\Infrastructure\\": "src/"
+		},
+		"files": [
+			"helpers/Helpers.php"
+		]
+	},
+	"require": {
+		"laravel/framework": "~9.0",
+		"cumulati/monolog-context": "~2.0.0",
+		"cumulati/optimus-heimdal": "~2.0",
+		"spatie/laravel-query-builder": "~5.0",
+		"hashids/hashids": "^4.1",
+		"pascaldevink/shortuuid": "^3.0"
+	},
+	"require-dev": {},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"license": "MIT"
+}
