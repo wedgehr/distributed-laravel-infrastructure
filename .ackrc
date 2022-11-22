@@ -1,0 +1,7 @@
+--ignore-dir=vendor/
+--ignore-dir=storage/
+--ignore-dir=tools/php-cs-fixer/vendor/
+--ignore-file=is:.php-cs-fixer.cache
+--ignore-file=is:phpstan-baseline.neon
+--ignore-file=is:.phpstorm.meta.php
+--ignore-file=is:.phpunit.result.cache
