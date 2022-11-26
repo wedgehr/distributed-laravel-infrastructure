@@ -11,7 +11,7 @@ class Version
 	protected static ?string $apiVersion = null;
 
 	// get app version
-	public static function apiVersion()
+	public static function apiVersion(): ?string
 	{
 		if (static::$apiVersion === null) {
 			static::detectApiVersion();
