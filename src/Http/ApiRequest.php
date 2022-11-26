@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use DistributedLaravel\Infrastructure\Exceptions\ValidationException;
+use DistributedLaravel\Infrastructure\Exceptions\Throwables\ValidationException;
 
 /**
  * ApiRequest
