@@ -50,7 +50,7 @@ abstract class ApiRequest extends FormRequest
 	}
 
 	/**
-	 * @return array<string, string|array<array-key, Rule>>
+	 * @return array<string, string|array<array-key, Rule|string>>
 	 */
 	public function rules(): array
 	{
