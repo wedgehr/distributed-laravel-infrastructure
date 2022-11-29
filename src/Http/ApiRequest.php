@@ -3,6 +3,7 @@
 namespace DistributedLaravel\Infrastructure\Http;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -49,7 +50,7 @@ abstract class ApiRequest extends FormRequest
 	}
 
 	/**
-	 * @return array<string, string>
+	 * @return array<string, string|array<array-key, Rule>>
 	 */
 	public function rules(): array
 	{
