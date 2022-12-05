@@ -26,9 +26,9 @@ class Command extends ConsoleCommand
 		$this->question(sprintf($format, ...$params));
 	}
 
-	public function confirmf(string $format, ...$params): void
+	public function confirmf(string $format, ...$params): bool
 	{
-		$this->confirm(sprintf($format, ...$params));
+		return $this->confirm(sprintf($format, ...$params));
 	}
 
 	public function error($string, $verbosity = null): void
