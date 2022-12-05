@@ -14,9 +14,15 @@
 		"cumulati/optimus-heimdal": "~2.0",
 		"spatie/laravel-query-builder": "~5.0",
 		"hashids/hashids": "^4.1",
-		"pascaldevink/shortuuid": "^3.0"
+		"pascaldevink/shortuuid": "^3.0",
+		"symfony/finder": "^6.2",
+		"wedgehr/distributed-laravel": "~2.0"
 	},
-	"require-dev": {},
+	"require-dev": {
+		"nunomaduro/larastan": "2.2.9",
+		"orchestra/testbench": "^7.6",
+		"cumulati/laravel-facade-generator": "^0.0"
+	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"license": "MIT"
