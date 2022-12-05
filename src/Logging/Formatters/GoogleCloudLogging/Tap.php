@@ -3,6 +3,7 @@
 namespace DistributedLaravel\Infrastructure\Logging\Formatters\GoogleCloudLogging;
 
 use Monolog\Formatter\JsonFormatter;
+use Monolog\Handler\FormattableHandlerInterface;
 
 class Tap
 {
@@ -15,6 +16,10 @@ class Tap
 	public function __invoke($logger)
 	{
 		foreach ($logger->getHandlers() as $handler) {
+			if (! $handler instanceof FormattableHandlerInterface) {
+				continue;
+			}
+
 			$handler->setFormatter(
 				new JsonFormatter(
 					// disable batching. each message should be terminated with a new line

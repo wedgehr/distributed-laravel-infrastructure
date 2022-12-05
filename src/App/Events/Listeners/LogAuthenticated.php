@@ -2,21 +2,11 @@
 
 namespace DistributedLaravel\Infrastructure\App\Events\Listeners;
 
-use Illuminate\Auth\Events\Authenticated as Event;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Auth\Events\Authenticated as Event;
 
 class LogAuthenticated
 {
-	/**
-	 * Create the event listener.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		//
-	}
-
 	/**
 	 * Handle the event.
 	 *
@@ -25,9 +15,9 @@ class LogAuthenticated
 	 */
 	public function handle(Event $event)
 	{
-		Log::info('Authenticated', [
+		Log::debug('authenticated', [
 			'guard' => $event->guard,
-			'user' => $event->user->id,
+			'user' => $event->user->id ?? null,
 		]);
 	}
 }

@@ -2,21 +2,19 @@
 
 namespace DistributedLaravel\Infrastructure\App;
 
-use DistributedLaravel\Infrastructure\Exceptions\Throwables\AppException;
-use DistributedLaravel\Infrastructure\Version;
-use Facades\Stats;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use DistributedLaravel\Infrastructure\Version;
+use DistributedLaravel\Infrastructure\Exceptions\Throwables\AppException;
 
 class AppServiceProvider extends ServiceProvider
 {
 	protected function ensureApplicationIsNotRunningInDebugMode(): void
 	{
 		// sanity check that we aren't boot app in production debug mode
-		if (config('app.debug') && app()->env === 'production') {
+		if (config('app.debug') && app()->environment() === 'production') {
 			Log::emergency('will not boot app in production with debug mode enabled');
 
 			throw new \Exception('will not boot app in production with debug mode enabled');
@@ -104,7 +102,7 @@ class AppServiceProvider extends ServiceProvider
 				'sql' => $query->sql,
 				'bindings' => $query->bindings,
 				'time' => $query->time,
-				'queryCount' => Stats::getQueryCount(),
+				'queryCount' => app()->make('Stats')->getQueryCount(),
 				// 'connection' => $query->connection->name,
 			]);
 		});
@@ -128,11 +126,6 @@ class AppServiceProvider extends ServiceProvider
 		// leaving app unsure if https is to be used. it _always_ is,
 		// force turn turn on https
 		$this->app['request']->server->set('HTTPS', 'on');
-
-
-		Collection::macro('find', function ($x) {
-			return $this->get($x);
-		});
 
 		// detect versions if not cached
 		if (empty(config('app.version'))) {

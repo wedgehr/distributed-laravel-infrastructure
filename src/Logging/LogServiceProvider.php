@@ -25,6 +25,11 @@ class LogServiceProvider extends ServiceProvider
 	public function boot(): void
 	{
 		$monolog = Log::getLogger();
+
+		if (! $monolog instanceof \Monolog\Logger) {
+			return;
+		}
+
 		LogContext::setDefaultAppendCtxId(true);
 		LogContext::setDefaultLogger($monolog);
 		LogContext::setDefaultKeyCounter('_c');

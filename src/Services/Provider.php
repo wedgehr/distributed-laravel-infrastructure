@@ -9,6 +9,13 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 
 abstract class Provider extends ServiceProvider implements DeferrableProvider
 {
+	protected string $resource;
+
+	/**
+	 * @var array<string, string>
+	 */
+	protected array $policies;
+
 	public function register()
 	{
 		if (isset($this->resource)) {

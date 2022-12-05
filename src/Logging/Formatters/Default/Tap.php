@@ -2,19 +2,24 @@
 
 namespace DistributedLaravel\Infrastructure\Logging\Formatters\Default;
 
+use Monolog\Logger;
 use Monolog\Formatter\JsonFormatter;
+use Monolog\Handler\FormattableHandlerInterface;
 
 class Tap
 {
 	/**
 	 * Customize the given logger instance.
 	 *
-	 * @param  \Illuminate\Log\Logger  $logger
 	 * @return void
 	 */
-	public function __invoke($logger)
+	public function __invoke(Logger $logger)
 	{
 		foreach ($logger->getHandlers() as $handler) {
+			if (! $handler instanceof FormattableHandlerInterface) {
+				continue;
+			}
+
 			$handler->setFormatter(
 				new JsonFormatter(
 					// disable batching. each message should be terminated with a new line

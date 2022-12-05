@@ -2,21 +2,11 @@
 
 namespace DistributedLaravel\Infrastructure\App\Events\Listeners;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Mail\Events\MessageSending as Event;
-use Log;
 
 class LogSendingMail
 {
-	/**
-	 * Create the event listener.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		//
-	}
-
 	/**
 	 * Handle the event.
 	 *
@@ -27,7 +17,7 @@ class LogSendingMail
 	{
 		$m = $event->message;
 
-		Log::debug('Sending mail message', [
+		Log::debug('sending mail message', [
 			'to' => $m->getTo(),
 			'from' => $m->getFrom(),
 			'subject' => $m->getSubject(),

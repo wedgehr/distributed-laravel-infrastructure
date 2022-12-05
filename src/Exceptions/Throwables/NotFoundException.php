@@ -8,9 +8,10 @@ class NotFoundException extends NotFoundHttpException
 {
 	public static $resource = null;
 
-	public function __construct(string $message = null, \Throwable $previous = null, int $code = 0, array $headers = [])
+	final public function __construct(string $message = null, \Throwable $previous = null, int $code = 0, array $headers = [])
 	{
 		if ($message === null) {
+			// @phpstan-ignore-next-line
 			$message = static::format();
 		}
 
@@ -20,6 +21,7 @@ class NotFoundException extends NotFoundHttpException
 	public static function throw($id = null, string $type = null)
 	{
 		throw new static(
+			// @phpstan-ignore-next-line
 			static::format($id, $type)
 		);
 	}

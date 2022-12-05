@@ -2,7 +2,6 @@
 
 namespace DistributedLaravel\Infrastructure;
 
-use Misc\Console\StubScriptCommand;
 use Illuminate\Support\ServiceProvider;
 use DistributedLaravel\Infrastructure\Console\ExampleCommand;
 use DistributedLaravel\Infrastructure\Config\ConfigCacheCommand;
@@ -24,9 +23,6 @@ class InfrastructureServiceProvider extends ServiceProvider
 			 MigrateCommand::class,
 			 ExampleCommand::class,
 			 // FreshCommand::class,
-
-			 // stubs
-			 StubScriptCommand::class,
 
 			 // facade generation
 			 RenderFacadeCommand::class,

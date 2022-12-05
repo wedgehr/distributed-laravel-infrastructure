@@ -2,21 +2,11 @@
 
 namespace DistributedLaravel\Infrastructure\App\Events\Listeners;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Auth\Events\Failed as Event;
-use Log;
 
 class LogAuthFailed
 {
-	/**
-	 * Create the event listener.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		//
-	}
-
 	/**
 	 * Handle the event.
 	 *
@@ -25,9 +15,9 @@ class LogAuthFailed
 	 */
 	public function handle(Event $event)
 	{
-		Log::info('Auth failed', [
-			'guard' => $event->name,
-			'user' => $event->user->id,
+		Log::debug('auth failed', [
+			'guard' => $event->guard,
+			'user' => $event->user->id ?? null,
 		]);
 	}
 }

@@ -4,11 +4,15 @@ namespace DistributedLaravel\Infrastructure\Exceptions\Formatters;
 
 use Illuminate\Http\JsonResponse;
 use Optimus\Heimdal\Formatters\HttpExceptionFormatter;
-use Throwable;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class AuthenticationExceptionFormatter extends HttpExceptionFormatter
 {
-	public function format(JsonResponse $response, Throwable $e, array $reporterResponses)
+	/**
+	 * @param JsonResponse $response
+	 * @param HttpException $e
+	 */
+	public function format(JsonResponse $response, \Throwable $e, array $reporterResponses)
 	{
 		parent::format($response, $e, $reporterResponses);
 

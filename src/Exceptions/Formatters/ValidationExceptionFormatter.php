@@ -2,9 +2,9 @@
 
 namespace DistributedLaravel\Infrastructure\Exceptions\Formatters;
 
+use Throwable;
 use Illuminate\Http\JsonResponse;
 use Optimus\Heimdal\Formatters\BaseFormatter;
-use Throwable;
 
 class ValidationExceptionFormatter extends BaseFormatter
 {
@@ -21,7 +21,7 @@ class ValidationExceptionFormatter extends BaseFormatter
 		}
 
 		// Laravel errors are formatted as {"field": [/*errors as strings*/]}
-		$data = array_reduce(array_keys($decoded), function ($carry, $field) use ($e, $decoded) {
+		$data = array_reduce(array_keys($decoded), function ($carry, $field) use ($decoded) {
 			if (! array_key_exists($field, $carry)) {
 				$carry[$field] = [];
 			}

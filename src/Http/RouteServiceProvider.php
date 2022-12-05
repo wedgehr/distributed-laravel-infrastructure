@@ -2,11 +2,11 @@
 
 namespace DistributedLaravel\Infrastructure\Http;
 
+use Illuminate\Routing\Router;
+use Illuminate\Contracts\View\Factory as ViewFactoryContract;
+use Optimus\Api\System\RouteServiceProvider as ServiceProvider;
 use DistributedLaravel\Infrastructure\Http\Routing\ResponseFactory;
 use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactoryContract;
-use Illuminate\Contracts\View\Factory as ViewFactoryContract;
-use Illuminate\Routing\Router;
-use Optimus\Api\System\RouteServiceProvider as ServiceProvider;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -23,7 +23,7 @@ class RouteServiceProvider extends ServiceProvider
 
 		$router->pattern('id', static::$idPattern);
 
-		parent::boot($router);
+		parent::boot();
 
 		$this->app->extend(ResponseFactoryContract::class, function () {
 			return new ResponseFactory($this->app[ViewFactoryContract::class], $this->app['redirect']);

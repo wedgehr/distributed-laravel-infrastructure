@@ -175,11 +175,19 @@ abstract class Service extends ServiceProvider
 		return $this;
 	}
 
-	public function instanceOfServiceModel($m)
+	public function instanceOfServiceModel(int|InfrastructureModel $m): bool
 	{
+		if (is_int($m)) {
+			return false;
+		}
+
 		$sm = $this->getServiceModel();
 
-		return (is_object($m) && $m instanceof $sm);
+		if (! $sm) {
+			throw new \LogicException('service model not defined');
+		}
+
+		return $m instanceof $sm;
 	}
 
 	public function getId(int|InfrastructureModel $m): int
@@ -230,7 +238,7 @@ abstract class Service extends ServiceProvider
 		return null;
 	}
 
-	public function mute(array $x = []): self
+	public function mute(false|array $x = []): self
 	{
 		if ($x === false) {
 			$this->muteEvents = false;

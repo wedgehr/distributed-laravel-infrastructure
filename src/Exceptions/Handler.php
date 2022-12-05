@@ -2,9 +2,9 @@
 
 namespace DistributedLaravel\Infrastructure\Exceptions;
 
+use Throwable;
 use Illuminate\Support\Facades\Log;
 use Optimus\Heimdal\ExceptionHandler;
-use Throwable;
 
 abstract class Handler extends ExceptionHandler
 {
@@ -41,7 +41,7 @@ abstract class Handler extends ExceptionHandler
 	 *
 	 * @param  \Illuminate\Http\Request  $request
 	 * @param  \Throwable  $e
-	 * @return \Illuminate\Http\Response
+	 * @return \Symfony\Component\HttpFoundation\Response.
 	 */
 	public function render($request, Throwable $e)
 	{

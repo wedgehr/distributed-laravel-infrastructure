@@ -3,11 +3,10 @@
 namespace DistributedLaravel\Infrastructure\Http\Middleware;
 
 use Closure;
-use Facades\Stats;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ExecutionTime
 {
@@ -60,7 +59,7 @@ class ExecutionTime
 			'path' => $request->path(),
 			'status' => $response->getStatusCode(),
 			'time' => $et,
-			'queries' => Stats::getQueryCount(),
+			'queries' => app()->make('Stats')->getQueryCount(),
 		];
 
 		if ($workerCount = config('xtra.octane.worker.request_count', null)) {
