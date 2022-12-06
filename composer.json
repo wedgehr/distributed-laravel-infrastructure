@@ -16,7 +16,8 @@
 		"hashids/hashids": "^4.1",
 		"pascaldevink/shortuuid": "^3.0",
 		"symfony/finder": "^6.2",
-		"wedgehr/distributed-laravel": "~2.0"
+		"wedgehr/distributed-laravel": "~2.0",
+		"symfony/process": "^6.2"
 	},
 	"require-dev": {
 		"nunomaduro/larastan": "2.2.9",
