@@ -2,7 +2,6 @@
 
 namespace DistributedLaravel\Infrastructure\Logging\Formatters\GoogleCloudLogging;
 
-use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\FormattableHandlerInterface;
 
 class Tap
