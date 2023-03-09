@@ -24,7 +24,7 @@ class AppException extends RuntimeException
 	): static {
 		$m = static::buildExceptionMessage($code, $msg, []);
 
-		Log::error('throwing AppException', compact($code, $msg));
+		Log::error('throwing AppException', compact('code', 'msg'));
 
 		$e = new static($m);
 
