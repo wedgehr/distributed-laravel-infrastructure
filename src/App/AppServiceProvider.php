@@ -36,6 +36,18 @@ class AppServiceProvider extends ServiceProvider
 		});
 
 		//
+		// hex_color validator
+		//
+		Validator::extend('hex_color', function ($attribute, $value, $parameters, $validator) {
+			$matches = preg_match(
+				'/^#(?:[0-9a-fA-F]{6})$/',
+				$value
+			);
+
+			return (bool) $matches;
+		});
+
+		//
 		// small_int validator
 		//
 		Validator::extend('small_int', function ($attribute, $value, $parameters, $validator) {
