@@ -3,8 +3,10 @@
 namespace DistributedLaravel\Infrastructure\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Event;
+use DistributedLaravel\Infrastructure\Http\Events\RequestConfigured;
 
 class RequestId
 {
@@ -75,6 +77,13 @@ class RequestId
 		}
 
 		Log::info('handling request', $ldata);
+
+		Event::dispatch(
+			new RequestConfigured(
+				requestId: $rid,
+				transactionId: $tid,
+			)
+		);
 
 		$rsp = $next($request);
 
