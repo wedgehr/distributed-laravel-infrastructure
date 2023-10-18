@@ -6,7 +6,6 @@ use Illuminate\Support\ServiceProvider;
 use DistributedLaravel\Infrastructure\Console\ExampleCommand;
 use DistributedLaravel\Infrastructure\Config\ConfigCacheCommand;
 use DistributedLaravel\Infrastructure\Queue\Console\WorkCommand;
-use DistributedLaravel\Infrastructure\Components\RenderFacadeCommand;
 use DistributedLaravel\Infrastructure\Queue\Console\QueueTestCommand;
 use DistributedLaravel\Infrastructure\Database\Migrations\MigrateCommand;
 
@@ -23,9 +22,6 @@ class InfrastructureServiceProvider extends ServiceProvider
 			 MigrateCommand::class,
 			 ExampleCommand::class,
 			 // FreshCommand::class,
-
-			 // facade generation
-			 RenderFacadeCommand::class,
 		]);
 	}
 }
