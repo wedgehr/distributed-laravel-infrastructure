@@ -73,4 +73,16 @@ class Command extends ConsoleCommand
 		$this->info($msg);
 		exit(0);
 	}
+
+	public function stringArgument(string $argument): string
+	{
+		$arg = $this->argument($argument);
+
+		if (! is_string($arg)) {
+			$this->errorf('argument {%s} is not stringy', $argument);
+			exit(1);
+		}
+
+		return $arg;
+	}
 }
